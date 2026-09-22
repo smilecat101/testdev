@@ -87,7 +87,7 @@ class UserController extends Controller
         ]);
 
         return redirect()
-            ->route('users.index')
+            ->route('dashboard')
             ->with('success', 'เพิ่ม User เรียบร้อยแล้ว');
     }
 
@@ -126,7 +126,7 @@ class UserController extends Controller
         $user->save();
 
         return redirect()
-            ->route('users.index')
+            ->route('dashboard')
             ->with('success', 'แก้ไข User เรียบร้อยแล้ว');
     }
 
