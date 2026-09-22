@@ -63,26 +63,92 @@ resources/views/
 routes/web.php
 
 
-## Installation
+## Setup
+
+### 1. Clone the project
 
 bash
-git clone https://github.com/USERNAME/REPOSITORY.git
+git clone https://github.com/smilecat101/testdev.git
 cd REPOSITORY
+
+
+### 2. Install dependencies
+
+bash
 composer install
 
 
-Create .env and configure the database:
+### 3. Create `.env`
+
+Copy `.env.example` to `.env`:
+
+bash
+cp .env.example .env
+
+
+Windows PowerShell:
+
+powershell
+Copy-Item .env.example .env
+
+
+### 4. Configure database
+
+Update the database settings in `.env`:
+
+env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=your_database
+DB_USERNAME=your_username
+DB_PASSWORD=your_password
+
+
+### 5. Generate application key
 
 bash
 php artisan key:generate
+
+
+### 6. Run database migration
+
+bash
 php artisan migrate
+
+
+### 7. Create an admin user
+
+Run:
+
+bash
+php artisan tinker
+
+
+Then:
+
+php
+\App\Models\User::create([
+    'name' => 'Admin',
+    'email' => 'admin@example.com',
+    'password' => \Illuminate\Support\Facades\Hash::make('123456789'),
+]);
+
+
+### 8. Start the application
+
+bash
 php artisan serve
 
 
-Then open:
+Open:
 
 text
 http://127.0.0.1:8000
+
+
+Login with the account created in step 7.
+
 
 
 ## Authentication
